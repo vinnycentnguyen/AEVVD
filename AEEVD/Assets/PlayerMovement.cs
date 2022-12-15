@@ -11,8 +11,6 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDirection;
 
-
-    // Update is called once per frame
     void Update()
     {
         ProcessInputs();
