@@ -5,7 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 8f;
+
     public Rigidbody2D rb;
+    
+    public int damage = 1;
 
     void Start()
     {
@@ -13,9 +16,13 @@ public class Bullet : MonoBehaviour
         Invoke("despawn", 1);
     }
 
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(hitInfo.name);
+        EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+        if(enemy != null)
+        {
+            enemy.TakeDamage(damage);
+        }
         Destroy(gameObject);
     }
 
