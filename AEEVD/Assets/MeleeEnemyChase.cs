@@ -22,36 +22,25 @@ public class MeleeEnemyChase : MonoBehaviour
 
     void Update()
     {   
-        Debug.Log(player.gameObject.GetComponent<PlayerHealth>().alive);
-        if (player.gameObject.GetComponent<PlayerHealth>().alive){
-            Vector3 direction = player.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-            direction.Normalize();
-            movement = direction;
-        }
+        Vector3 direction = player.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
+        direction.Normalize();
+        movement = direction;
     }
 
     private void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-        }
+        other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
     }
     private void FixedUpdate()
     {
-        if (player.gameObject.GetComponent<PlayerHealth>().alive){
-            moveCharacter(movement);
-        }
+        moveCharacter(movement);
     }
 
     void moveCharacter(Vector2 direction)
     {
-        if (player.gameObject.GetComponent<PlayerHealth>().alive)
-        {
-            rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
-        }
+        rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
     }
 
     

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     
-    public Transform firePoint;
+    public Transform FirePoint;
     public GameObject bulletPrefab;
     public float firerate;
     float nextFire;
@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour
         if(Time.time > nextFire)
         {
             nextFire = Time.time + firerate;
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
 
         }
     }
