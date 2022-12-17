@@ -4,29 +4,26 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 8f;
+    public float speed = 8;
     public Rigidbody2D rb;
+    public int damage = 1;
 
     void Start()
     {
         rb.velocity = transform.up * speed;
-        Invoke("despawn", 1f);
+        Invoke("despawn", 0.7f);
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-<<<<<<< HEAD:AEEVD/Assets/Bullet.cs
-        EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+        EnemyHealth enemy = hitInfo.GetComponent<EnemyHealth>();
         if(enemy != null)
         {
             enemy.TakeDamage(damage);
-            Debug.Log(enemy);
+            Destroy(gameObject);
+            Debug.Log(gameObject.tag);
         }
         Debug.Log("created");
-=======
-        Debug.Log(hitInfo.name);
->>>>>>> parent of 7358655 (Player/enemy take damage and Enemy movement):AEEVD/Assets/Scripts/Bullet.cs
-        Destroy(gameObject);
     }
 
     void despawn()

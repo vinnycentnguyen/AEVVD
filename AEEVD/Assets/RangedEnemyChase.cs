@@ -11,7 +11,6 @@ public class RangedEnemyChase : MonoBehaviour
     public Transform enemyWeapon;
 
     public float speed;
-    public float playerRange;
     private bool inRange;
     public float attackRange;
     public float cdTime;
@@ -23,7 +22,7 @@ public class RangedEnemyChase : MonoBehaviour
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         enemyWeapon.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
-        if(Vector2.Distance(transform.position, player.position) <= playerRange && Vector2.Distance(transform.position, player.position) > attackRange)
+        if(Vector2.Distance(transform.position, player.position) > attackRange)
         {
             inRange = true;
         }
