@@ -33,6 +33,7 @@ public class MeleeEnemyChase : MonoBehaviour
     {
         other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
     }
+    
     private void FixedUpdate()
     {
         moveCharacter(movement);
