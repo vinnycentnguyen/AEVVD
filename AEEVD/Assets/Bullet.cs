@@ -21,9 +21,7 @@ public class Bullet : MonoBehaviour
         {
             enemy.TakeDamage(damage);
             Destroy(gameObject);
-            Debug.Log(gameObject.tag);
         }
-        Debug.Log("created");
     }
 
     void despawn()

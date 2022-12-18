@@ -6,7 +6,7 @@ public class RangedEnemyChase : MonoBehaviour
 {
     
     public GameObject EnemyBullet;
-    public Transform player;
+    public GameObject player;
     public Transform rangedFirePoint;
     public Transform enemyWeapon;
 
@@ -18,12 +18,12 @@ public class RangedEnemyChase : MonoBehaviour
   
     void Update()
     {
-        Vector3 difference = player.position - enemyWeapon.transform.position;
+        Vector3 difference = player.transform.position - enemyWeapon.transform.position;
         float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 90 * Time.deltaTime);
 
-        if(Vector2.Distance(transform.position, player.position) > attackRange)
+        if(Vector2.Distance(transform.position, player.transform.position) > attackRange)
         {
             inRange = true;
         }
@@ -32,7 +32,7 @@ public class RangedEnemyChase : MonoBehaviour
             inRange = false;
         }
 
-        if(Vector2.Distance(transform.position, player.position) <= attackRange)
+        if(Vector2.Distance(transform.position, player.transform.position) <= attackRange)
         {
             if(atkCD <= 0)
             {
@@ -50,7 +50,7 @@ public class RangedEnemyChase : MonoBehaviour
     {
         if(inRange)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
     }
 }

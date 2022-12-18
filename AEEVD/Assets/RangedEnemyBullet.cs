@@ -9,10 +9,9 @@ public class RangedEnemyBullet : MonoBehaviour
 
     void Start()
     {
-        Invoke("DestoryProjectile", 0.7f);
+        Invoke("DestroyProjectile", 0.7f);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         transform.Translate(Vector2.up * bulletSpeed * Time.deltaTime);
@@ -24,7 +23,7 @@ public class RangedEnemyBullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void DestoryProjectile()
+    void DestroyProjectile()
     {
         Destroy(gameObject);
     }
