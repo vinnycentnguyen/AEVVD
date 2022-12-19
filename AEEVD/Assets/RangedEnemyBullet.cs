@@ -9,7 +9,7 @@ public class RangedEnemyBullet : MonoBehaviour
 
     void Start()
     {
-        Invoke("DestroyProjectile", 0.7f);
+        Invoke("DestroyProjectile", 1.5f);
     }
 
     void FixedUpdate()

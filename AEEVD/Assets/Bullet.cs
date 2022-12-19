@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.up * speed;
-        Invoke("despawn", 0.7f);
+        Invoke("despawn", 0.85f);
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
