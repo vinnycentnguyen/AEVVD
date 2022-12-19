@@ -5,15 +5,19 @@ using UnityEngine;
 public class SmoothCameraFollow : MonoBehaviour
 {
 
-    public Transform target;
+    public GameObject player;
     public Vector3 offset;
     public float damping;
 
     private Vector3 velocity = Vector3.zero;
 
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     void FixedUpdate()
     {
-        Vector3 movePosition = target.position + offset;
+        Vector3 movePosition = player.transform.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, damping);
     }
 }

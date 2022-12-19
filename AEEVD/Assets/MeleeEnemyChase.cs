@@ -18,12 +18,13 @@ public class MeleeEnemyChase : MonoBehaviour
 
     private float atkCD;
 
-    private bool canAttack = true;
+    private bool canAttack;
 
     
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        canAttack = true;
     }
 
     void Update()
