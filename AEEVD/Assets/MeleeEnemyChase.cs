@@ -25,6 +25,7 @@ public class MeleeEnemyChase : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         canAttack = true;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
