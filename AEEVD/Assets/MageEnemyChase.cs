@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemyChase : MonoBehaviour
+public class MageEnemyChase : MonoBehaviour
 {
-    
-    public GameObject EnemyBullet;
+    public GameObject EnemySpell;
     public GameObject player;
-    public Transform rangedFirePoint;
     private Rigidbody2D rb;
     private Vector2 movement;
     private Vector3 direction;
@@ -18,6 +16,7 @@ public class RangedEnemyChase : MonoBehaviour
     public float attackRange;
     public float cdTime;
     private float atkCD;
+    public float radius = 1.5f;
 
     void Start()
     {
@@ -45,7 +44,7 @@ public class RangedEnemyChase : MonoBehaviour
         {
             if(atkCD <= 0)
             {
-                Instantiate(EnemyBullet, rangedFirePoint.position, rangedFirePoint.transform.rotation);
+                Instantiate(EnemySpell, (Vector2)player.transform.position + Random.insideUnitCircle * radius, Quaternion.identity);
                 atkCD = cdTime;
             }
             else
@@ -62,4 +61,5 @@ public class RangedEnemyChase : MonoBehaviour
             rb.MovePosition((Vector2)transform.position + (Vector2)(direction * speed * Time.deltaTime));       
         }
     }
+
 }
