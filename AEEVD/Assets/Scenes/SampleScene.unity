@@ -753,9 +753,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave1
-    numEnemies: 1
+    numEnemies: 3
     Enemies:
-    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
     spawnInterval: 0.25
   - waveName: Wave2
     numEnemies: 5
@@ -770,16 +772,16 @@ MonoBehaviour:
     numEnemies: 10
     Enemies:
     - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
     - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
-    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
-    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
-    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
     - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
     - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
     - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
-    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
-    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
-    spawnInterval: 0.5
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    spawnInterval: 0.75
   spawnPoints:
   - {fileID: 1283126325}
   - {fileID: 1386880327}
@@ -1060,6 +1062,10 @@ PrefabInstance:
     - target: {fileID: 6892289080908076362, guid: bdf771024b5e42941b52a206246737fb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892289080908076363, guid: bdf771024b5e42941b52a206246737fb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6892289080908076364, guid: bdf771024b5e42941b52a206246737fb, type: 3}
       propertyPath: m_RootOrder

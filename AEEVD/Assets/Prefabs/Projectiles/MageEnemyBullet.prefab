@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4805531971131492553}
   - component: {fileID: 4805531971131492554}
   - component: {fileID: 4797109647121118480}
+  - component: {fileID: -1372184514149056289}
   m_Layer: 8
   m_Name: MageEnemyBullet
   m_TagString: Untagged
@@ -100,3 +101,20 @@ MonoBehaviour:
   yellow: {fileID: 7497166964513730230, guid: 934100e946a108b4fbb49d611d7a577a, type: 3}
   orange: {fileID: 818322334048379172, guid: 940309b40e7848447afbf62b9a7c9d79, type: 3}
   red: {fileID: 1738578785211376578, guid: 03787614dd69e0d4a872dd81d745906d, type: 3}
+  splashRange: 1
+--- !u!58 &-1372184514149056289
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805531971131492556}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

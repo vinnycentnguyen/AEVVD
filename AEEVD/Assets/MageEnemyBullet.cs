@@ -4,51 +4,73 @@ using UnityEngine;
 
 public class MageEnemyBullet : MonoBehaviour
 {
-    private int damage = 2;
+    
     public GameObject yellow;
     public GameObject orange;
     public GameObject red;
+    
+    public float splashRange = 1;
 
     private float timer;
-    private bool cast;
+    private int rotation;
+    private int damage = 2;
+    private bool inflict;
+    private float inflictTimer;
 
     void Start()
     {   
-        cast = true;
+        inflict = true;
+        rotation = 0;
         timer = 0;
-        Invoke("DestroyProjectile", 1f);
+        inflictTimer = 0;
+        Invoke("DestroyProjectile", 1.25f);
     }
 
     void Update()
     {
-        if(cast){
-            if(timer >=0 && timer < 0.25)
-            {
-                Instantiate(yellow, transform.position, Quaternion.identity);
-                cast = false;
-            }
-            else if(timer >= 0.25 && timer < 0.5)
-            {
-                Instantiate(orange, transform.position, Quaternion.identity);
-                cast = false;
-            }
-            
-            else if(timer >= 0.5 && timer < 0.75)
-            {
-                Instantiate(red, transform.position, Quaternion.identity);
-                cast = false;
-            }
+        if(timer < 0.25f)
+        {
+            timer += Time.deltaTime;
         }
-
-        timer += Time.deltaTime;
+        else if(timer >= 0.25 && rotation < 3)
+        {
+            createEffect(rotation);
+            rotation++;
+            timer = 0;
+            Debug.Log(inflictTimer);
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void FixedUpdate()
     {
-        if(timer >= 0.85 && timer < 100)
+        inflictTimer += Time.deltaTime;
+    }
+
+    private void createEffect(int rotation)
+    {
+        switch(rotation)
         {
-            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-            timer = 100;
+            case 0:
+                Instantiate(yellow, transform.position, Quaternion.identity);
+                break;
+            case 1:
+                Instantiate(orange, transform.position, Quaternion.identity);
+                break;
+            case 2:
+                Instantiate(red, transform.position, Quaternion.identity);
+                break;
+            default:
+                Debug.Log("Out of bounds: rotation");
+                break;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(Physics2D.OverlapCircle(transform.position, splashRange, 3) && inflict && (inflictTimer > 0.8))
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            inflict = false;
         }
     }
 

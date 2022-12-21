@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1245622434131937336}
   - component: {fileID: 3816183074741162280}
   - component: {fileID: 4590565637098004796}
-  - component: {fileID: 7825632131546580998}
   m_Layer: 8
   m_Name: Orange
   m_TagString: Untagged
@@ -98,19 +97,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463554869e5f0294eb1beb8134b7be49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &7825632131546580998
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818322334048379172}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
