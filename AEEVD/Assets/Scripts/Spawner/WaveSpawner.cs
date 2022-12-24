@@ -16,27 +16,33 @@ public class WaveSpawner : MonoBehaviour
     public Wave[] waves;
     public Transform[] spawnPoints;
     public GameObject player;
-
     private Wave currentWave;
-    private int currentWaveNum;
+
+    private int _currentWaveNum;
+    public int CurrentWaveNum {get{return _currentWaveNum + 1;} set{;}}
     private float nextSpawnTime;
     private int amtEnemies;
-
+    private float nextWaveTimer;
     private bool canSpawn = true;
 
     void Start()
     {
+        nextWaveTimer = 0f;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        currentWave = waves[currentWaveNum];
+        currentWave = waves[_currentWaveNum];
         SpawnWave();
         GameObject[] totalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if(totalEnemies.Length == 0 && !canSpawn && currentWaveNum+1 != waves.Length)
+        if(totalEnemies.Length == 0 && !canSpawn && _currentWaveNum + 1 != waves.Length)
         {  
-            SpawnNextWave();
+            nextWaveTimer += Time.deltaTime;
+            if(nextWaveTimer >= 3f)
+            {
+                SpawnNextWave();
+            }
         }
             
     }
@@ -44,9 +50,10 @@ public class WaveSpawner : MonoBehaviour
     void SpawnNextWave()
     {   
         amtEnemies = 0;
-        currentWaveNum++;
+        nextWaveTimer = 0f;
+        _currentWaveNum++;
         canSpawn = true;
-        player.GetComponent<PlayerHealth>().healEveryRound(currentWaveNum);
+        player.GetComponent<PlayerHealth>().healEveryRound(_currentWaveNum);
     }
     
 
@@ -66,4 +73,6 @@ public class WaveSpawner : MonoBehaviour
             }
         }
     }
+
+    
 }
