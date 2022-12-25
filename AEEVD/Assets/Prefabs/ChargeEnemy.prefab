@@ -100,11 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea02b2f3d58a05643ad2f2ef79bfb7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 6892289080908076366, guid: bdf771024b5e42941b52a206246737fb, type: 3}
   player: {fileID: 6892289080908076362, guid: bdf771024b5e42941b52a206246737fb, type: 3}
-  speed: 4
-  attackRange: 5
-  cdTime: 4
+  speed: 4.3
+  attackRange: 6.5
+  cdTime: 3
   damage: 3
 --- !u!114 &4946751996563941413
 MonoBehaviour:
@@ -133,14 +132,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!60 &4567049043061098977
 PolygonCollider2D:

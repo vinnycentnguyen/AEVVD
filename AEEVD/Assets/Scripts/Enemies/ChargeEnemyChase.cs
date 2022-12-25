@@ -5,10 +5,8 @@ using Unity.Mathematics;
 
 public class ChargeEnemyChase : MonoBehaviour
 {
-    public Rigidbody2D target;
     public GameObject player;
     private Rigidbody2D rb;
-    private Vector2 movement;
     private Vector3 direction;
     
     public float speed;
@@ -18,91 +16,88 @@ public class ChargeEnemyChase : MonoBehaviour
 
     private bool inRange;
     private float timer;
-    private float chargeTimer;
     private float atkCD;
     private bool canCharge;
+    private bool charging;
 
     void Start()
     {
+        charging = false;
         canCharge = false;
-        timer = 1f;
-        chargeTimer = 0.5f;
+        timer = 0.75f;
         rb = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
         direction.Normalize();
-        movement = direction;
 
-        if(Vector2.Distance(transform.position, player.transform.position) > attackRange)
+        if(Vector2.Distance(transform.position, player.transform.position) > attackRange && !charging)
         {
-            inRange = true;
+            rb.MovePosition((Vector2)transform.position + (Vector2)(direction * speed * Time.deltaTime));   
         }
+
         else
         {
-            inRange = false;
+            timer -= Time.deltaTime;
+        }
+
+        if(timer <= 0)
+        {
+            canCharge = true;
         }
 
         if(Vector2.Distance(transform.position, player.transform.position) <= attackRange)
         {
+            charging = true;
+        }
+
+        if(charging)
+        {
             if(atkCD <= 0)
             {
                 charge();
+                timer = 0.75f;
                 atkCD = cdTime;
             }
             else
             {
                 atkCD -= Time.deltaTime;
             }
-        }
-        
-    }
-
-    void FixedUpdate()
-    {
-        if(inRange)
-        {
-            rb.MovePosition((Vector2)transform.position + (Vector2)(direction * speed * Time.deltaTime));       
-        }
-        else
-        {
-            timer -= Time.deltaTime;
-        }
-        if(timer <= 0)
-        {
-            canCharge = true;
+            
+            if(Vector2.Distance(transform.position, player.transform.position) > attackRange + 1)
+            {
+                canCharge = false;
+                speed = 4.3f;
+                charging = false;
+                rb.velocity = Vector2.zero;
+            }
+           
         }
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if(canCharge){
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             canCharge = false;
+            charging = false;
         }
     }
 
     void charge()
-    {
-        chargeTimer = 0.5f;
-        speed = 10f;
-        if(InterceptionDirection(a: target.transform.position, b: transform.position, vA: target.velocity, speed, result: out var chargeDirection))
+    {  
+        speed = 9f;
+        if(InterceptionDirection(a: player.transform.position, b: transform.position, vA: player.gameObject.GetComponent<Rigidbody2D>().velocity, speed, result: out var chargeDirection))
         {
             if(canCharge)
             {
-                Debug.Log("Charging");
-                rb.velocity = chargeDirection * speed;
-                chargeTimer -= Time.deltaTime;
-                if(chargeTimer <= 0)
-                {
-                    canCharge = false;
-                    speed = 4f;
-                }
+                rb.velocity = chargeDirection * speed;  
+                
             }
         }
     }
@@ -123,7 +118,6 @@ public class ChargeEnemyChase : MonoBehaviour
         var t = dA / sB;
         var c = a + vA * t;
         result = (c - b).normalized;
-        Debug.Log(result);
         return true; 
     }
 }
