@@ -43,7 +43,6 @@ public class PlayerHealth : MonoBehaviour
         }
         else if(startFade)
         {
-            Debug.Log("StartFade true");
             fadeTimer -= Time.deltaTime;
             if(fadeTimer <= 0)
             {
