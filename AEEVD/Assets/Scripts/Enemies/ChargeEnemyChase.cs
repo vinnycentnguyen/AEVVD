@@ -24,7 +24,7 @@ public class ChargeEnemyChase : MonoBehaviour
     {
         charging = false;
         canCharge = false;
-        timer = 0.75f;
+        timer = 0.35f;
         rb = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -61,7 +61,7 @@ public class ChargeEnemyChase : MonoBehaviour
             if(atkCD <= 0)
             {
                 charge();
-                timer = 0.75f;
+                timer = 0.35f;
                 atkCD = cdTime;
             }
             else

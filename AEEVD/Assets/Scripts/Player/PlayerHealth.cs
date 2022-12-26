@@ -32,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if(showHP && health > 3)
         {
+            healthBar.fillAmount = health/maxHealth;
+            healthBar.color = gradient.Evaluate(healthBar.fillAmount);
             newAlpha = 1;
             ChangeAlpha();
             timer -= Time.deltaTime;
@@ -60,8 +62,6 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        healthBar.fillAmount = health/maxHealth;
-        healthBar.color = gradient.Evaluate(healthBar.fillAmount);
         showHP = true;
         startFade = false;
         timer = 3f;
@@ -77,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void healEveryRound(int currentWaveNum)
     {
-        if(health + (currentWaveNum / 10) + 2 <= 10)
+        if(health + (currentWaveNum / 5) + 2 <= 10)
         {
             health += 2;
         }
