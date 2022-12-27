@@ -28,12 +28,12 @@ public class PlayerHealth : MonoBehaviour
         maxHealth = 10f;
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        healthBar.fillAmount = health/maxHealth;
+        healthBar.color = gradient.Evaluate(healthBar.fillAmount);
         if(showHP && health > 3)
         {
-            healthBar.fillAmount = health/maxHealth;
-            healthBar.color = gradient.Evaluate(healthBar.fillAmount);
             newAlpha = 1;
             ChangeAlpha();
             timer -= Time.deltaTime;

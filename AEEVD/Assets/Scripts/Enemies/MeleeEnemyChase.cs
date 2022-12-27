@@ -54,6 +54,7 @@ public class MeleeEnemyChase : MonoBehaviour
         if(canAttack){
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             canAttack = false;
+            atkCD = cdTime;
         }
     }
     
