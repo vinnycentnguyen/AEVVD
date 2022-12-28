@@ -30,8 +30,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        healthBar.fillAmount = health/maxHealth;
-        healthBar.color = gradient.Evaluate(healthBar.fillAmount);
         if(showHP && health > 3)
         {
             newAlpha = 1;
@@ -64,6 +62,8 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         showHP = true;
         startFade = false;
+        healthBar.fillAmount = health/maxHealth;
+        healthBar.color = gradient.Evaluate(healthBar.fillAmount);
         timer = 3f;
         if(health <= 0)
         {
@@ -86,6 +86,8 @@ public class PlayerHealth : MonoBehaviour
             health = 10;
         }
         showHP = true;
+        healthBar.fillAmount = health/maxHealth;
+        healthBar.color = gradient.Evaluate(healthBar.fillAmount);
     }
 
     public void ChangeAlpha()
@@ -97,7 +99,7 @@ public class PlayerHealth : MonoBehaviour
     
     void Die()
     {
-        Destroy(gameObject);
+        FindObjectOfType<GameManager>().EndGame();
     }
 
     public bool alive{get; private set;}
