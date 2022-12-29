@@ -1129,10 +1129,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - waveName: Wave1
-    numEnemies: 2
+    numEnemies: 3
     Enemies:
-    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
-    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
     spawnInterval: 0.25
   - waveName: Wave2
     numEnemies: 5
@@ -1169,7 +1170,7 @@ MonoBehaviour:
     - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
     - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
     spawnInterval: 0.9
-  - waveName: Final Wave
+  - waveName: Wave5
     numEnemies: 10
     Enemies:
     - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
@@ -1182,6 +1183,54 @@ MonoBehaviour:
     - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
     - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
     - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    spawnInterval: 0.75
+  - waveName: Wave6
+    numEnemies: 8
+    Enemies:
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 5824468018644112417, guid: db09f6d7a01f9594c9bde6006aa4af63, type: 3}
+    spawnInterval: 0.75
+  - waveName: Wave7
+    numEnemies: 12
+    Enemies:
+    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
+    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
+    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 5824468018644112417, guid: db09f6d7a01f9594c9bde6006aa4af63, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    - {fileID: 5824468018644112417, guid: db09f6d7a01f9594c9bde6006aa4af63, type: 3}
+    spawnInterval: 0.75
+  - waveName: Wave8
+    numEnemies: 16
+    Enemies:
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
+    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
+    - {fileID: 5302212658318157963, guid: 08ccf96976f261b47b975c6979b844b2, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    - {fileID: 8429447898442050143, guid: f030c929c07ef6a428c5f39e85663c6e, type: 3}
+    - {fileID: 5824468018644112417, guid: db09f6d7a01f9594c9bde6006aa4af63, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 5824468018644112417, guid: db09f6d7a01f9594c9bde6006aa4af63, type: 3}
+    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 5824468018644112417, guid: db09f6d7a01f9594c9bde6006aa4af63, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
     spawnInterval: 0.75
   spawnPoints:
   - {fileID: 1283126325}
