@@ -1131,9 +1131,9 @@ MonoBehaviour:
   - waveName: Wave1
     numEnemies: 3
     Enemies:
-    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
-    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
-    - {fileID: 1154767605219980281, guid: 98e74454646af8745a7cfd660ff84ed9, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
+    - {fileID: 8436011544141600801, guid: 9d22c54074f82a2409d8221b37f0555a, type: 3}
     spawnInterval: 0.25
   - waveName: Wave2
     numEnemies: 5

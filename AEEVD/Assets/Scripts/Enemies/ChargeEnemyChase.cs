@@ -6,6 +6,8 @@ using Unity.Mathematics;
 public class ChargeEnemyChase : MonoBehaviour
 {
     public GameObject player;
+    public Gradient gradient;
+    
     private Rigidbody2D rb;
     private Vector3 direction;
     
@@ -15,26 +17,25 @@ public class ChargeEnemyChase : MonoBehaviour
     public int damage;
 
     private bool inRange;
-    private float timer;
-    private float atkCD;
-    private float chargeAngle;
     private bool canCharge;
     private bool hit;
     private bool charging;
-
+    private float atkCD;
+    private float angle;
+    
     void Start()
     {
         charging = false;
         hit = false;
         atkCD = cdTime;
         canCharge = false;
-        timer = 0.35f;
         rb = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void FixedUpdate()
     {
+        color();
         if(charging == false)
         {
             direction = player.transform.position - transform.position;
@@ -42,24 +43,19 @@ public class ChargeEnemyChase : MonoBehaviour
             rb.rotation = angle;
             direction.Normalize();
         }
-        else
-        {
-            rb.rotation = chargeAngle;
-        }
 
         if(Vector2.Distance(transform.position, player.transform.position) > attackRange && !canCharge)
         {
             rb.MovePosition((Vector2)transform.position + (Vector2)(direction * speed * Time.deltaTime));   
         }
-
-        else
-        {
-            timer -= Time.deltaTime;
-        }
-
-        if(timer <= 0 && Vector2.Distance(transform.position, player.transform.position) <= attackRange)
+        
+        if(atkCD <= 0 && Vector2.Distance(transform.position, player.transform.position) <= attackRange)
         {
             canCharge = true;
+        }
+        else
+        {
+            atkCD -= Time.deltaTime;
         }
 
         if(canCharge)
@@ -69,12 +65,7 @@ public class ChargeEnemyChase : MonoBehaviour
                 hit = false;
                 charging = true;
                 charge();
-                timer = 0.35f;
                 atkCD = cdTime;
-            }
-            else
-            {
-                atkCD -= Time.deltaTime;
             }
             
             if(Vector2.Distance(transform.position, player.transform.position) > attackRange + 1)
@@ -92,6 +83,7 @@ public class ChargeEnemyChase : MonoBehaviour
     {
         if(canCharge && hit == false){
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            rb.velocity = Vector2.zero;
             canCharge = false;
             charging = false;
             hit = true;
@@ -106,13 +98,15 @@ public class ChargeEnemyChase : MonoBehaviour
             if(canCharge)
             {
                 charging = true;
-                chargeAngle = MyMath.Angle(chargeDirection);
                 rb.velocity = chargeDirection * speed;
+                Vector2 v= rb.velocity; 
+                angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg + 90f; 
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             }
         }
     }
 
-    public bool InterceptionDirection(Vector2 a, Vector2 b, Vector2 vA, float sB, out Vector2 result)
+    private bool InterceptionDirection(Vector2 a, Vector2 b, Vector2 vA, float sB, out Vector2 result)
     {
         var aToB = b - a;
         var dC = aToB.magnitude;
@@ -129,6 +123,11 @@ public class ChargeEnemyChase : MonoBehaviour
         var c = a + vA * t;
         result = (c - b).normalized;
         return true; 
+    }
+
+    void color()
+    {
+        gameObject.GetComponent<Renderer>().material.color = gradient.Evaluate(atkCD/cdTime);
     }
 }
 
@@ -147,16 +146,4 @@ public class MyMath
             root2 = (-b - Mathf.Sqrt(discriminant))/(2 * a);
             return discriminant > 0 ? 2 : 1;
     }
-
-    public static float Angle(Vector2 vector2)
-        {
-            if (vector2.x < 0)
-            {
-                return 360 - (Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg * -1);
-            }
-            else
-            {
-                return Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg;
-            }
-        }
 }
