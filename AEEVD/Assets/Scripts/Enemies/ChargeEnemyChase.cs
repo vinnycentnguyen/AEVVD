@@ -22,9 +22,11 @@ public class ChargeEnemyChase : MonoBehaviour
     private bool charging;
     private float atkCD;
     private float angle;
+    private float setSpeed;
     
     void Start()
     {
+        setSpeed = speed;
         charging = false;
         hit = false;
         atkCD = cdTime;
@@ -35,7 +37,6 @@ public class ChargeEnemyChase : MonoBehaviour
 
     void FixedUpdate()
     {
-        color();
         if(charging == false)
         {
             direction = player.transform.position - transform.position;
@@ -53,9 +54,10 @@ public class ChargeEnemyChase : MonoBehaviour
         {
             canCharge = true;
         }
-        else
+        else if(atkCD > 0 && charging == false)
         {
             atkCD -= Time.deltaTime;
+            color();
         }
 
         if(canCharge)
@@ -72,7 +74,7 @@ public class ChargeEnemyChase : MonoBehaviour
             {
                 canCharge = false;
                 charging = false;
-                speed = 4.3f;
+                speed = setSpeed;
                 rb.velocity = Vector2.zero;
             }
            
@@ -83,11 +85,11 @@ public class ChargeEnemyChase : MonoBehaviour
     {
         if(canCharge && hit == false){
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-            rb.velocity = Vector2.zero;
             canCharge = false;
             charging = false;
             hit = true;
         }
+        rb.velocity = Vector2.zero;
     }
 
     void charge()
@@ -127,7 +129,7 @@ public class ChargeEnemyChase : MonoBehaviour
 
     void color()
     {
-        gameObject.GetComponent<Renderer>().material.color = gradient.Evaluate(atkCD/cdTime);
+        gameObject.GetComponent<SpriteRenderer>().color = gradient.Evaluate(atkCD/cdTime);
     }
 }
 
