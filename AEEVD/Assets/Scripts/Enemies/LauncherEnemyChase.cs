@@ -7,21 +7,28 @@ public class LauncherEnemyChase : MonoBehaviour
     public GameObject LauncherEnemyBullet;
     public GameObject player;
     public Transform launcherFirePoint;
+
     private Rigidbody2D rb;
     private Vector2 movement;
     private Vector3 direction;
 
-
-    public float speed;
-    private bool inRange;
     public float attackRange;
     public float cdTime;
+    public float speed;
+
+    private bool inRange;
+    private bool hit;
+    private float hitTimer;
     private float atkCD;
+    private float activeSpeed;
+    private int collisionDamage = 5;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = this.GetComponent<Rigidbody2D>();
+        hitTimer = 0.5f;
+        activeSpeed = speed;
     }
 
 
@@ -35,11 +42,11 @@ public class LauncherEnemyChase : MonoBehaviour
 
         if(Vector2.Distance(transform.position, player.transform.position) > attackRange)
         {
-            inRange = true;
+            activeSpeed = speed;
         }
         else
         {
-            inRange = false;
+            activeSpeed = 2.3f;
         }
 
         if(Vector2.Distance(transform.position, player.transform.position) <= attackRange)
@@ -54,13 +61,36 @@ public class LauncherEnemyChase : MonoBehaviour
                 atkCD -= Time.deltaTime;
             }
         }
+
+        if(hit)
+        {
+            hitTimer -= Time.deltaTime;
+            if(hitTimer <= 0)
+            {
+                hit = false;
+            }
+        }
     }
 
     void FixedUpdate()
     {
-        if(inRange)
+        if(hit == false)
         {
-            rb.MovePosition((Vector2)transform.position + (Vector2)(direction * speed * Time.deltaTime));       
+            rb.MovePosition((Vector2)transform.position + (Vector2)(direction * activeSpeed * Time.deltaTime));
         }
+        else
+        {
+            rb.MovePosition((Vector2)transform.position - (Vector2)(direction * (activeSpeed * 1.5f) * Time.deltaTime));
+        }  
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(hit == false){
+            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(collisionDamage);
+            hit = true;
+            hitTimer = 0.5f;
+        }
+        rb.velocity = Vector2.zero;
     }
 }

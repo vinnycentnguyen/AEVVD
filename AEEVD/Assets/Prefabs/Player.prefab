@@ -199,9 +199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6892289080908076366}
   playerBomb: {fileID: 7906131192614924849, guid: 9120683a52d420147b6ccb3122ed7461, type: 3}
+  dashSlider: {fileID: 0}
   moveSpeed: 4.2
   dashSpeed: 10
-  dashLength: 0.5
+  dashLength: 0.35
   dashCD: 7
 --- !u!114 &6892289080908076367
 MonoBehaviour:

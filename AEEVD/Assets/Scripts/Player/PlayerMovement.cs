@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public GameObject playerBomb;
+    public Slider dashSlider;
 
     private Vector2 moveDirection;
 
@@ -52,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
         {
             dashCDTimer -= Time.deltaTime;
         }
+
+        dashSlider.value = 1 - dashCDTimer/dashCD;
     }
 
     void FixedUpdate()

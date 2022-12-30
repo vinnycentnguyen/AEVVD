@@ -28,11 +28,11 @@ public class MageEnemyBullet : MonoBehaviour
 
     void Update()
     {
-        if(timer < 0.25f)
+        if(timer < 0.2f)
         {
             timer += Time.deltaTime;
         }
-        else if(timer >= 0.25 && rotation < 3)
+        else if(timer >= 0.2 && rotation < 3)
         {
             createEffect(rotation);
             rotation++;
@@ -67,7 +67,7 @@ public class MageEnemyBullet : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(Physics2D.OverlapCircle(transform.position, splashRange, 3) && inflict && (inflictTimer > 0.8))
+        if(Physics2D.OverlapCircle(transform.position, splashRange, 3) && inflict && (inflictTimer > 0.7))
         {
             collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             inflict = false;

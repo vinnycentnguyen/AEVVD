@@ -6,7 +6,7 @@ public class MageEnemyBulletEffect : MonoBehaviour
 {
     void Start()
     {
-        Invoke("despawn", 0.25f);
+        Invoke("despawn", 0.2f);
     }
 
     void despawn()

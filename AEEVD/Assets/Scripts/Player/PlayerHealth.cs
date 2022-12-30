@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if(showHP && health > 3)
+        if(showHP && health > 9)
         {
             newAlpha = 1;
             ChangeAlpha();

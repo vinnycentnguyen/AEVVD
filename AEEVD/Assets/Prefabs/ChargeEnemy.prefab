@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4964174759817353661}
   - component: {fileID: 4946751996563941413}
   - component: {fileID: 4463692368726809853}
-  - component: {fileID: 4567049043061098977}
+  - component: {fileID: 122630457280418131}
   m_Layer: 7
   m_Name: ChargeEnemy
   m_TagString: Enemy
@@ -170,8 +170,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!60 &4567049043061098977
-PolygonCollider2D:
+--- !u!70 &122630457280418131
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -184,18 +184,5 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8828125, y: 1}
-    newSize: {x: 1, y: 0.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
-      - {x: 0.5, y: 0}
+  m_Size: {x: 0.85, y: 0.95}
+  m_Direction: 0

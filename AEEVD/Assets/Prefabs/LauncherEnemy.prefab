@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3366296480311692678}
   - component: {fileID: 6774554012969501632}
   - component: {fileID: -1219184196451278897}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: LauncherEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -156,9 +156,9 @@ MonoBehaviour:
   LauncherEnemyBullet: {fileID: 3117919062756514752, guid: 9e428910126c04946846612f50df830b, type: 3}
   player: {fileID: 6892289080908076362, guid: bdf771024b5e42941b52a206246737fb, type: 3}
   launcherFirePoint: {fileID: 1915197596541785600}
-  speed: 4
   attackRange: 10
-  cdTime: 3
+  cdTime: 2.5
+  speed: 4
 --- !u!1 &6627652937664011711
 GameObject:
   m_ObjectHideFlags: 0
