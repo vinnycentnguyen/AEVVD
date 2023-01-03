@@ -37,7 +37,6 @@ public class MageEnemyBullet : MonoBehaviour
             createEffect(rotation);
             rotation++;
             timer = 0;
-            Debug.Log(inflictTimer);
         }
     }
 

@@ -16,10 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private float activeMoveSpeed;
     private float dashTimer;
     private float dashCDTimer;
+    private float canMoveTimer;
+    private bool canMove;
 
 
     void Start()
     {
+        canMove = true;
         activeMoveSpeed = moveSpeed;
     }
 
@@ -53,12 +56,24 @@ public class PlayerMovement : MonoBehaviour
             dashCDTimer -= Time.deltaTime;
         }
 
+        if(canMove == false)
+        {
+            canMoveTimer -= Time.deltaTime;
+            if(canMoveTimer <= 0)
+            {
+                canMove = true;
+            }
+        }
+
         dashSlider.value = 1 - dashCDTimer/dashCD;
     }
 
     void FixedUpdate()
     {
-        Move();
+        if(canMove)
+        {
+            Move();
+        }
     }
 
     void ProcessInputs()
@@ -72,6 +87,13 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector2(moveDirection.x * activeMoveSpeed, moveDirection.y * activeMoveSpeed);
+    }
+
+    public void stopMovement(float freezeTimer)
+    {
+        canMoveTimer = freezeTimer;
+        canMove = false;
+        rb.velocity = Vector2.zero;
     }
 
     public Vector2 getMoveDirection()
