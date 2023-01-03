@@ -1,21 +1,23 @@
 using UnityEngine;
 
-public class RangedEnemyChase : MonoBehaviour
+public class TerrainEnemyChase : MonoBehaviour
 {
     
-    public GameObject EnemyBullet;
+    public GameObject Terrain;
     public GameObject player;
-    public Transform rangedFirePoint;
     private Rigidbody2D rb;
     private Vector2 movement;
     private Vector3 direction;
+    private Vector2 playerDir;
 
-
-    public float speed;
-    private bool inRange;
     public float attackRange;
     public float cdTime;
+    public float speed;
+
+    private bool inRange;
     private float atkCD;
+    private float angle;
+    private float playerAng;
 
     void Start()
     {
@@ -25,7 +27,7 @@ public class RangedEnemyChase : MonoBehaviour
     void Update()
     {
         direction = player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
         direction.Normalize();
         movement = direction;
@@ -43,7 +45,10 @@ public class RangedEnemyChase : MonoBehaviour
         {
             if(atkCD <= 0)
             {
-                Instantiate(EnemyBullet, rangedFirePoint.position, rangedFirePoint.transform.rotation);
+                playerDir = player.GetComponent<Rigidbody2D>().velocity;
+                playerAng = Mathf.Atan2(playerDir.x, playerDir.y) * Mathf.Rad2Deg;
+                var step = speed * Time.deltaTime;
+                Instantiate(Terrain, (Vector2)player.transform.position + player.GetComponent<Rigidbody2D>().velocity, Quaternion.Inverse(Quaternion.AngleAxis(playerAng, Vector3.forward)));
                 atkCD = cdTime;
             }
             else

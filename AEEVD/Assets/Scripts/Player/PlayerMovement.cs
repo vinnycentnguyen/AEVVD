@@ -73,4 +73,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(moveDirection.x * activeMoveSpeed, moveDirection.y * activeMoveSpeed);
     }
+
+    public Vector2 getMoveDirection()
+    {
+        return moveDirection;
+    }
 }
