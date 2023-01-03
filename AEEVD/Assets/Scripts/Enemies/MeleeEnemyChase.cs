@@ -49,7 +49,7 @@ public class MeleeEnemyChase : MonoBehaviour
        }
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if(canAttack){
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
