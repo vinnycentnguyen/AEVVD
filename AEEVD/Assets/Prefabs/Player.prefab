@@ -231,7 +231,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 872570487987063904, guid: ec46ac6732e1da847b2d0208dcac497d, type: 3}
   playerBomb: {fileID: 7906131192614924849, guid: 9120683a52d420147b6ccb3122ed7461, type: 3}
   firerate: 0.25
-  bombCD: 0
+  bombCD: 7
   holdingDown: 0
 --- !u!60 &6892289080908076370
 PolygonCollider2D:
