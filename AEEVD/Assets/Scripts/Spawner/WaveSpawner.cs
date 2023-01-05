@@ -34,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
-        _currentWaveNum = 9;
+        _currentWaveNum = 0;
         nextWaveTimer = 0f;
         player = GameObject.FindGameObjectWithTag("Player");
     }
