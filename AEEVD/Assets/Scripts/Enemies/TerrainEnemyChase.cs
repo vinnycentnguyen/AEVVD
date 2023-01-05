@@ -9,6 +9,7 @@ public class TerrainEnemyChase : MonoBehaviour
     private Vector2 movement;
     private Vector3 direction;
     private Vector2 playerDir;
+    private Vector2 addVelocity; 
 
     public float attackRange;
     public float cdTime;
@@ -48,7 +49,8 @@ public class TerrainEnemyChase : MonoBehaviour
                 playerDir = player.GetComponent<Rigidbody2D>().velocity;
                 playerAng = Mathf.Atan2(playerDir.x, playerDir.y) * Mathf.Rad2Deg;
                 var step = speed * Time.deltaTime;
-                Instantiate(Terrain, (Vector2)player.transform.position + player.GetComponent<Rigidbody2D>().velocity, Quaternion.Inverse(Quaternion.AngleAxis(playerAng, Vector3.forward)));
+                addVelocity = new (player.GetComponent<Rigidbody2D>().velocity.x * 2/3, player.GetComponent<Rigidbody2D>().velocity.y * 2/3);
+                Instantiate(Terrain, (Vector2)player.transform.position + addVelocity, Quaternion.Inverse(Quaternion.AngleAxis(playerAng, Vector3.forward)));
                 atkCD = cdTime;
             }
             else

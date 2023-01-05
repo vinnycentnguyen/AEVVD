@@ -19,10 +19,6 @@ public class TerrainEnemyWall : MonoBehaviour
             other.gameObject.GetComponent<PlayerMovement>().stopMovement(freezeTimer);
             Invoke("Despawn", 0.25f);
         }
-        else if(other.gameObject.tag == "Enemy")
-        {
-            Invoke("Despawn", 0.5f);
-        }
     }
 
     void Despawn()

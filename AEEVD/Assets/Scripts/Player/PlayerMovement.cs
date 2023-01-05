@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public GameObject playerBomb;
     public Slider dashSlider;
 
     private Vector2 moveDirection;
@@ -36,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 activeMoveSpeed = dashSpeed;
                 dashTimer = dashLength;
-                Instantiate(playerBomb, transform.position, transform.rotation);
+                
             }
         }
 

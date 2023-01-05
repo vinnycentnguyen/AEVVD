@@ -7,9 +7,15 @@ public class Weapon : MonoBehaviour
     
     public Transform FirePoint;
     public GameObject bulletPrefab;
+    public GameObject playerBomb;
+
     public float firerate;
-    float nextFire;
+    public float bombCD;
     public bool holdingDown;
+
+    private float nextFire;
+    private float nextBomb;
+    
 
     void Update()
     {
@@ -22,8 +28,13 @@ public class Weapon : MonoBehaviour
             holdingDown = true;
             Shoot();
         }
-        else{
+        else
+        {
             holdingDown = false;
+        }
+        if(Input.GetButtonDown("Fire2"))
+        {
+            ThrowBomb();
         }
     }
 
@@ -33,7 +44,16 @@ public class Weapon : MonoBehaviour
         {
             nextFire = Time.time + firerate;
             Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+        }
+    }
 
+    void ThrowBomb()
+    {
+        if(Time.time > nextBomb)
+        {
+            nextBomb = Time.time + bombCD;
+            Instantiate(playerBomb, FirePoint.position, FirePoint.rotation);
+            
         }
     }
 }

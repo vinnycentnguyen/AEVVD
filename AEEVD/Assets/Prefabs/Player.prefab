@@ -198,12 +198,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6892289080908076366}
-  playerBomb: {fileID: 7906131192614924849, guid: 9120683a52d420147b6ccb3122ed7461, type: 3}
   dashSlider: {fileID: 0}
   moveSpeed: 4.2
   dashSpeed: 10
-  dashLength: 0.35
-  dashCD: 7
+  dashLength: 0.275
+  dashCD: 5
 --- !u!114 &6892289080908076367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,8 +229,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 6892289080037448979}
   bulletPrefab: {fileID: 872570487987063904, guid: ec46ac6732e1da847b2d0208dcac497d, type: 3}
+  playerBomb: {fileID: 7906131192614924849, guid: 9120683a52d420147b6ccb3122ed7461, type: 3}
   firerate: 0.25
-  holdingDown: 1
+  bombCD: 0
+  holdingDown: 0
 --- !u!60 &6892289080908076370
 PolygonCollider2D:
   m_ObjectHideFlags: 0
