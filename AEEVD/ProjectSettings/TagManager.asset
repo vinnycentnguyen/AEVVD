@@ -10,6 +10,8 @@ TagManager:
   - WaveSpawner
   - Score
   - PlayerProjectile
+  - BombSlider
+  - DashSlider
   layers:
   - Default
   - TransparentFX

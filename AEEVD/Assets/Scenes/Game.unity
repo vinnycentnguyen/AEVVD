@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 233469402}
   m_Layer: 5
   m_Name: DashCD
-  m_TagString: Untagged
+  m_TagString: DashSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 1146162603}
   m_Layer: 5
   m_Name: ' BombCD'
-  m_TagString: Untagged
+  m_TagString: BombSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2292,7 +2292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6892289080908076365, guid: bdf771024b5e42941b52a206246737fb, type: 3}
       propertyPath: dashCD
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6892289080908076365, guid: bdf771024b5e42941b52a206246737fb, type: 3}
       propertyPath: dashSpeed
@@ -2314,6 +2314,10 @@ PrefabInstance:
       propertyPath: firerate
       value: 0.27
       objectReference: {fileID: 0}
+    - target: {fileID: 6892289080908076368, guid: bdf771024b5e42941b52a206246737fb, type: 3}
+      propertyPath: bombSlider
+      value: 
+      objectReference: {fileID: 1146162602}
     - target: {fileID: 6892289080908076369, guid: bdf771024b5e42941b52a206246737fb, type: 3}
       propertyPath: healthBar
       value: 

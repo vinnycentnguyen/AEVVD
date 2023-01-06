@@ -3,10 +3,12 @@ using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
-    public Slider bombSlider;
+    public GameObject bombSlider;
     public Transform FirePoint;
     public GameObject bulletPrefab;
     public GameObject playerBomb;
+
+    
 
     public float firerate;
     public float bombCD;
@@ -16,6 +18,11 @@ public class Weapon : MonoBehaviour
     private float nextBomb;
     private float bombTimer;
     private float bombCDTimer;
+
+    void Start()
+    {
+        bombSlider = GameObject.FindGameObjectWithTag("BombSlider");
+    }
 
     void Update()
     {
@@ -37,6 +44,7 @@ public class Weapon : MonoBehaviour
             if(bombCDTimer <= 0 && bombTimer <= 0)
             {
                 Instantiate(playerBomb, FirePoint.position, FirePoint.rotation);
+                bombCDTimer = bombCD;
             }
         }
         if(bombTimer > 0)
@@ -54,7 +62,8 @@ public class Weapon : MonoBehaviour
             bombCDTimer -= Time.deltaTime;
         }
 
-        bombSlider.value = 1 - bombCDTimer/bombCD;
+        bombSlider.transform.GetChild(0).GetComponent<Slider>().value = 1 - bombCDTimer/bombCD;
+        Debug.Log(1 - bombCDTimer/bombCD);
     }
 
     void Shoot()
