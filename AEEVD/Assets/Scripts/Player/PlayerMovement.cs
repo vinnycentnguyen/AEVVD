@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed;
     public float dashSpeed;
-    public float dashLength = .5f, dashCD = 7f;
+    public float dashLength, dashCD;
 
     private float activeMoveSpeed;
     private float dashTimer;

@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
-    
+    public Slider bombSlider;
     public Transform FirePoint;
     public GameObject bulletPrefab;
     public GameObject playerBomb;
@@ -15,7 +14,8 @@ public class Weapon : MonoBehaviour
 
     private float nextFire;
     private float nextBomb;
-    
+    private float bombTimer;
+    private float bombCDTimer;
 
     void Update()
     {
@@ -34,8 +34,27 @@ public class Weapon : MonoBehaviour
         }
         if(Input.GetButtonDown("Fire2"))
         {
-            ThrowBomb();
+            if(bombCDTimer <= 0 && bombTimer <= 0)
+            {
+                Instantiate(playerBomb, FirePoint.position, FirePoint.rotation);
+            }
         }
+        if(bombTimer > 0)
+        {
+            bombTimer -= Time.deltaTime;
+
+            if(bombTimer <= 0)
+            {
+                bombCDTimer = bombCD;
+            }
+        }
+
+        if(bombCDTimer > 0)
+        {
+            bombCDTimer -= Time.deltaTime;
+        }
+
+        bombSlider.value = 1 - bombCDTimer/bombCD;
     }
 
     void Shoot()
@@ -44,16 +63,6 @@ public class Weapon : MonoBehaviour
         {
             nextFire = Time.time + firerate;
             Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
-        }
-    }
-
-    void ThrowBomb()
-    {
-        if(Time.time > nextBomb)
-        {
-            nextBomb = Time.time + bombCD;
-            Instantiate(playerBomb, FirePoint.position, FirePoint.rotation);
-            
         }
     }
 }
