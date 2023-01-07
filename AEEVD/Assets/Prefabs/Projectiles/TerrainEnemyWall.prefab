@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezeTimer: 0.75
-  wallHP: 3
 --- !u!114 &2837246243761886706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: {fileID: 3270712770524214785, guid: 4d51ead3f41245c42adffa64febe8882, type: 3}
   HealthBar: {fileID: 7459394638511871962}
+  HitEffect: {fileID: 3980672609078440074, guid: 7058bde3a921a4c4a895bd4dfba32092, type: 3}
   scoreValue: 0
   health: 3
 --- !u!1 &5810679918192018896
@@ -388,6 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: {fileID: 3270712770524214785, guid: 4d51ead3f41245c42adffa64febe8882, type: 3}
   HealthBar: {fileID: 7459394638511871962}
+  HitEffect: {fileID: 0}
   scoreValue: 0
   health: 3
 --- !u!1 &6504345883333373657

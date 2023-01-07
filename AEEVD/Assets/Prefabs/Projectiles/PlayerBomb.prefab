@@ -131,7 +131,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   damage: 3
   splashRange: 1.25
-  activateTimer: 1
+  activateTimer: 0.9
   speed: 11
 --- !u!58 &6408788038579602324
 CircleCollider2D:

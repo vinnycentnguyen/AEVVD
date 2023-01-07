@@ -63,7 +63,6 @@ public class Weapon : MonoBehaviour
         }
 
         bombSlider.transform.GetChild(0).GetComponent<Slider>().value = 1 - bombCDTimer/bombCD;
-        Debug.Log(1 - bombCDTimer/bombCD);
     }
 
     void Shoot()

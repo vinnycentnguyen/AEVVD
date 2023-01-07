@@ -309,7 +309,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 828287992dab560458a2ab6f7753deb8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.050053377, g: 0.7169812, b: 0.062403843, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -370,6 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: {fileID: 3270712770524214785, guid: 4d51ead3f41245c42adffa64febe8882, type: 3}
   HealthBar: {fileID: 6674895734131836726}
+  HitEffect: {fileID: 3980672609078440074, guid: 7058bde3a921a4c4a895bd4dfba32092, type: 3}
   scoreValue: 50
   health: 15
 --- !u!114 &-1219184196451278897

@@ -384,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: {fileID: 3270712770524214785, guid: 4d51ead3f41245c42adffa64febe8882, type: 3}
   HealthBar: {fileID: 8875205134947650222}
+  HitEffect: {fileID: 3980672609078440074, guid: 7058bde3a921a4c4a895bd4dfba32092, type: 3}
   scoreValue: 20
   health: 3
 --- !u!114 &3200534715396693070
