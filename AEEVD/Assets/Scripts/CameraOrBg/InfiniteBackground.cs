@@ -4,33 +4,44 @@ using UnityEngine;
 
 public class InfiniteBackground : MonoBehaviour
 {
-    [SerializeField] private Vector2 parallaxEffectMultiplier;
+    private GameObject cam;
 
-    private Transform cameraTransform;
+    private float lengthX;
+    private float lengthY;
+    private float startX;
+    private float startY;
 
-    private Vector3 lastCameraPosition;
-
-    private float textureUnitSizeX;
-
-    private void Start()
+    void Start()
     {
-        cameraTransform = Camera.main.transform;
-        lastCameraPosition = cameraTransform.position;
-        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
-        Texture2D texture = sprite.texture;
-        textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
+        cam = GameObject.Find("Main Camera");
+        startX = transform.position.x;
+        startY = transform.position.y;
+        lengthX = gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
+        lengthY = gameObject.GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
-    private void LateUpdate()
+    void Update()
     {
-        Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
-        transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x, deltaMovement.y * parallaxEffectMultiplier.y);
-        lastCameraPosition = cameraTransform.position;
-
-        if(cameraTransform.position.x - transform.position.x >= textureUnitSizeX)
+        //if(Mathf.Abs(Vector3.Distance(cam.transform.position, transform.position)) > lengthX * 2)
+        //{
+            transform.position = new Vector3(startX, startY, 0);
+        //}
+        if(cam.transform.position.x > (startX + lengthX))
         {
-            float offsetPositionX = (cameraTransform.position.x - transform.position.x) % textureUnitSizeX;
-            transform.position = new Vector3(cameraTransform.position.x + offsetPositionX, transform.position.y);
+            startX += lengthX;
+        }
+        else if(cam.transform.position.x < (startX - lengthX))
+        {
+            startX -= lengthX;
+        }
+
+        if(cam.transform.position.y > (startY + lengthY))
+        {
+            startY += lengthY;
+        }
+        else if(cam.transform.position.y < (startY - lengthY))
+        {
+            startY -= lengthY;
         }
     }
 }
