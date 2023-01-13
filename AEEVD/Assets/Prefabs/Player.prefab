@@ -154,7 +154,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0.8941177, b: 0.07058824, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a680f7c6364fea45815dcc744d490b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombSlider: {fileID: 0}
   FirePoint: {fileID: 6892289080037448979}
   bulletPrefab: {fileID: 872570487987063904, guid: ec46ac6732e1da847b2d0208dcac497d, type: 3}
   playerBomb: {fileID: 7906131192614924849, guid: 9120683a52d420147b6ccb3122ed7461, type: 3}
